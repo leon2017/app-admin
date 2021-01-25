@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <div>大王叫我来巡山</div>
     <div>
       <logo />
       <h1 class="title">

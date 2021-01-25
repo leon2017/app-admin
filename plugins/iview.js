@@ -4,4 +4,5 @@ import locale from 'iview/dist/locale/en-US' // Change locale, check node_module
 
 Vue.use(iView, {
   locale
-})
+});
+import 'iview/dist/styles/iview.css';
