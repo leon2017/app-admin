@@ -10,9 +10,9 @@
             <Icon type="ios-navigate"></Icon>
             国际化
           </template>
-          <MenuItem name="international-one">主站1</MenuItem>
-          <MenuItem name="international-two">主站2</MenuItem>
-          <MenuItem name="international-three">主站3</MenuItem>
+          <MenuItem :name="menuList[0].name">主站1</MenuItem>
+          <MenuItem :name="menuList[1].name">主站2</MenuItem>
+          <MenuItem :name="menuList[2].name">主站3</MenuItem>
         </Submenu>
         <Submenu name="2">
           <template slot="title">
@@ -47,25 +47,21 @@
   </div>
 </template>
 <script>
+import menuConfig from '../configs/menuNavigation'
 export default {
+    data() {
+      return {
+        menuList: menuConfig
+      }
+    },
     methods: {
         changeMenu (active) {
             console.log("我被切换",active);
-            switch (active) {
-              case "international-one":
-                this.$router.push({
-                    name: "international"
+            let menu = menuConfig.find((m)=> m.name == active)
+            if(menu){
+              this.$router.push({
+                    name: menu.router
                 });
-                break;
-                case "international-two":
-                
-                break;
-                case "international-three":
-                
-                break;
-            
-              default:
-                break;
             }
         },
     },
