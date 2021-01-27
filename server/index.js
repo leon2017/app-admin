@@ -9,6 +9,8 @@ const passport = require('./utils/passport')
 const bannerRouter = require('./routers/banners')
 const goodsRouter = require('./routers/goods')
 const usersRouter = require('./routers/users')
+const internationnalRouter = require('./routers/internationnal')
+
 
 const app = new Koa()
 require('./dbs/config')
@@ -55,6 +57,7 @@ async function start () {
   app.use(bannerRouter.routes()).use(bannerRouter.allowedMethods())
   app.use(goodsRouter.routes()).use(goodsRouter.allowedMethods())
   app.use(usersRouter.routes()).use(usersRouter.allowedMethods())
+  app.use(internationnalRouter.routes()).use(internationnalRouter.allowedMethods())
 
   app.use((ctx) => {
     ctx.status = 200

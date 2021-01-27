@@ -1,0 +1,27 @@
+.container {
+  padding-top: 64px;
+  min-height: 100vh;
+}
+
+.container .headerButton {
+  margin-right: 10px;
+}
+
+.litsContainer {
+  padding: 64px 12px 0 12px;
+}
+
+.litsContainer .headerLabel {
+  displey: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+}
+
+.headerLabel .p {
+  font-weight: bold;
+  width: 100px;
+  height: 30px;
+  background: gray;
+  text-align: center;
+  line-height: 30px;
+}

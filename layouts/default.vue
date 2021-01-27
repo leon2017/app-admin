@@ -33,7 +33,7 @@
       </Menu>
     </Sider>
     <Layout :style="{ marginLeft: '200px' }">
-      <Content :style="{ padding: '0 16px 16px' }">
+      <Content :style="{ padding: '0' }">
         <Nuxt />
       </Content>
       <Header
