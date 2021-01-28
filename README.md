@@ -1,20 +1,24 @@
-# litbAppAdmin
+## 安装运行项目
 
-## Build Setup
+这个项目中要用到Mongodb，所以必须安装。
 
-```bash
-# install dependencies
-$ yarn install
+- Mac 安装mongodb
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+https://www.runoob.com/mongodb/mongodb-osx-install.html
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+- Windows 安装mongodb
 
-# generate static project
-$ yarn generate
-```
+https://www.runoob.com/mongodb/mongodb-window-install.html
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+>  install dependencies
+   yarn install
+   
+> serve with hot reload at localhost:3000
+yarn dev
+
+> build for production and launch server
+yarn build
+yarn start
+
+> generate static project
+yarn generate

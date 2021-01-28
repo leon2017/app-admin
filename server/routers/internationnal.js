@@ -15,47 +15,41 @@ router.get('/lists', async (ctx) => {
 
 router.post('/addInternationnal', async (ctx) => {
   let params = ctx.request.body.params;
-  console.log("params",params);
+  console.log("params", params);
   let typeName = params.type;
   let internation = params.internationnal;
-  console.log("internation",internation);
+  // console.log("internation", internation);
   let internationnalModel = await Internationnal.findOne({
     'name': typeName
   })
-  internationnalModel.save()
-  console.log("internationnalModel",internationnalModel);
-  if(!internationnalModel.length){
+  // console.log("internationnalModel", internationnalModel);
+  if (!internationnalModel) {
     let param = {};
     let iList = []
     param.name = typeName;
     iList.push(internation);
     param.values = iList;
     internationnalModel = await Internationnal.create(param)
-    console.log("internationnalModel2",internationnalModel);
-  }else{
-    let tempList = []
-    let tempValues = internationnalModel.values;
-    for (let index = 0; index < tempValues.length; index++) {
-      const element = tempValues[index];
-      if (element.internationnalKey == internation.internationnalKey) {
-        tempList.push(internation)
-      } else {
-        tempList.push(element)
+    // console.log("internationnalModel2", internationnalModel);
+  } else {
+    let languages = internationnalModel.values;
+    for (let i = 0; i < languages.length; i++) {
+      if (internation.internationnalKey == languages[i].internationnalKey) {
+        languages.splice(i, 1)
       }
     }
-    internationnalModel.values = tempList
-    console.log("internationnalModel3",internationnalModel);
+    internationnalModel.values.push(internation)
   }
   let res = await internationnalModel.save()
   if (res) {
     ctx.body = {
       status: 200,
-      msg: sucMsg
+      msg: "成功"
     }
   } else {
     ctx.body = {
       status: 0,
-      msg: errMsg
+      msg: "失败"
     }
   }
 })
