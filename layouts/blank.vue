@@ -1,12 +1,15 @@
 <template>
   <div>
-    <Nuxt />
+    <nuxt />
   </div>
 </template>
 
 <script>
-// 在页面中设置layout
-export default {
-  layout: 'blank' //默认是default
-}
+  export default {
+    
+  }
 </script>
+
+<style lang="less" scoped>
+
+</style>

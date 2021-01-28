@@ -1,42 +1,67 @@
+
 module.exports = {
   mode: 'universal',
-  // Global page headers (https://go.nuxtjs.dev/config-head)
+  /*
+  ** Headers of the page
+  */
   head: {
-    title: 'litbAppAdmin',
+    title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
-  // Global CSS (https://go.nuxtjs.dev/config-css)
+  /*
+  ** Customize the progress-bar color
+  */
+  loading: { color: '#fff' },
+  /*
+  ** Global CSS
+  */
   css: [
-    'iview/dist/styles/iview.css'
+    'element-ui/lib/theme-chalk/index.css',
+    'element-ui/lib/theme-chalk/reset.css',
+    '~assets/css/main.less'
   ],
-
-  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
+  /*
+  ** Plugins to load before mounting the App
+  */
   plugins: [
-    {src: '~plugins/iview', ssr: true},
-    '~/plugins/axios'
+    '@/plugins/element-ui',
+    '~/plugins/axios',
+    '~/plugins/filters'
   ],
-
-  // Auto import components (https://go.nuxtjs.dev/config-components)
-  components: true,
-
-  // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
-  buildModules: [
+  /*
+  ** Nuxt.js dev-modules
+  */
+  devModules: [
   ],
-
-  // Modules (https://go.nuxtjs.dev/config-modules)
+  /*
+  ** Nuxt.js modules
+  */
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/style-resources'
   ],
-
-  // Build Configuration (https://go.nuxtjs.dev/config-build)
+  styleResources: {
+    // 全局注入 less变量
+    less: ['./assets/css/variate.less','./assets/css/mixins.less']
+  },
+  // router: {
+  //   middleware: 'auth'
+  // },
+  /*
+  ** Build configuration
+  */
   build: {
+    /*
+    ** You can extend webpack config here
+    */
+    extend(config, ctx) {
+    }
   }
 }

@@ -1,0 +1,90 @@
+@font-face {
+  font-family: 'iconfont';
+  /* project id 682850 */
+  src: url('//at.alicdn.com/t/font_682850_58yfbhz7jvf.eot');
+  src: url('//at.alicdn.com/t/font_682850_58yfbhz7jvf.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_682850_58yfbhz7jvf.woff') format('woff'),
+    url('//at.alicdn.com/t/font_682850_58yfbhz7jvf.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_682850_58yfbhz7jvf.svg#iconfont') format('svg');
+}
+
+@font-face {
+  font-family: 'meituan';
+  src: url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.eot?t=1503027869484);
+    src: url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.eot?t=1503027869484#iefix) format('embedded-opentype'),
+    url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.woff?t=1503027869484) format('woff'),
+    url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.ttf?t=1503027869484) format('truetype'),
+    url(//s0.meituan.net/bs/fe-web-meituan/c19c6e9/font/home-category-iconfont.svg?t=1503027869484#home-category-iconfont) format('svg')
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  background: @bgColor;
+}
+body *{
+  margin: 0;
+  padding: 0;
+}
+a{
+  color: inherit;
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+
+// 加载更多
+.load-more {
+  margin: 20px auto;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  width: 600px;
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  color: @redColor;
+}
+.price {
+  color: #e1251b;
+  font-size: 25px;
+  font-weight: bold;
+  padding-left:20px; 
+  span {
+    font-size: 12px;
+    .marginR(5px);
+  }
+}
+// 修改elementui 默认样式
+
+.el-header {
+  padding: 0;
+}
+
+.el-input.is-active .el-input__inner, .el-input__inner:focus {
+  border-color: @redColor;
+  outline: 0;
+  color: @blackColor;
+}
+
+.el-radio-button__orig-radio:checked+.el-radio-button__inner {
+  background: @redColor;
+  border-color: @redColor;
+  box-shadow: -1px 0 0 @redColor;
+}
+.el-radio-button__inner:hover {
+  color: @blackColor;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner{
+  background-color: @redColor;
+  border-color: @redColor;
+  &:hover{
+    border-color: @redColor;
+  }
+}
+.el-checkbox__input.is-checked+.el-checkbox__label {
+  border-color: @redColor;
+  color: @redColor;
+}

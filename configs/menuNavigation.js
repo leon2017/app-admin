@@ -1,15 +1,15 @@
 const menuConfig = [
     {
-        'name': 'international-one',
-        'router': 'international'
+        'name': 'ezbuy',
+        'router': '/international'
     },
     {
-        'name': 'international-two',
-        'router': 'international'
+        'name': 'litb',
+        'router': '/international'
     },
     {
-        'name': 'international-three',
-        'router': 'international'
+        'name': 'mini',
+        'router': '/international'
     }
 ]
 

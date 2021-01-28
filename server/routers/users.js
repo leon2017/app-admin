@@ -73,6 +73,7 @@ router.post('/signin', async (ctx, next) => {
           }
         }
         // Passport中间件带的ctx.login
+        console.log("登录成功",user);
         return ctx.login(user)
       } else {
         ctx.body = {
