@@ -4,7 +4,7 @@
       <el-button type="primary" @click="addDialogFormVisible = true"
         >添加</el-button
       >
-      <el-button type="success">导入</el-button>
+      <el-button type="success" @click="dialogFormVisible = true">导入</el-button>
       <el-button type="danger">导出</el-button>
       <el-button type="info">模板下载</el-button>
     </el-row>
@@ -39,7 +39,9 @@
       <el-table-column prop="id" label="id" width="180"> </el-table-column>
       <el-table-column fixed="right" label="操作" width="100">
         <template slot-scope="scope">
-          <el-button @click="handleClick(scope.row)" type="text" size="small">复制</el-button>
+          <el-button @click="handleClick(scope.row)" type="text" size="small"
+            >复制</el-button
+          >
           <el-button type="text" size="small">编辑</el-button>
         </template>
       </el-table-column>
@@ -58,6 +60,26 @@
         <el-button @click="addDialogFormVisible = false">取 消</el-button>
         <el-button type="primary" @click="onSubmit">确 定</el-button>
       </div>
+    </el-dialog>
+    <el-dialog title="上传" :visible.sync="dialogFormVisible"
+     width="20%" center>
+      <el-upload
+        ref="upload"
+        action="/"
+        :show-file-list="false"
+        :on-change="importExcel"
+        :auto-upload="false"
+        :limit="1"
+      >
+        <el-button
+          slot="trigger"
+          icon="el-icon-upload"
+          size="small"
+          type="primary"
+        >
+          导入
+        </el-button>
+      </el-upload>
     </el-dialog>
   </div>
 </template>
