@@ -7,7 +7,8 @@ export const obj = {
       langTitles: LangFileName,
       addDialogFormVisible: false,
       formList: [],
-      formLabelWidth: '100px'
+      formLabelWidth: '100px',
+      tableData: []
     }
   },
   mounted(){
@@ -26,6 +27,7 @@ export const obj = {
     });
     tempList = tempList.concat(langs);
     this.formList = tempList;
+    this.queryLanguags();
   },
   methods: {
     async onSubmit() {
@@ -56,6 +58,48 @@ export const obj = {
         this.$message.success('加入成功！');
         this.addDialogFormVisible = false
         this.formList = []
+      } else {
+        this.$message.error(res.msg);
+      }
+    },
+    async queryLanguags(){
+      let res = await this.$axios.get("/i18n/queryInternationnals?typeName=ezbuy");
+      if(res.status == 200) {
+        let tempList = res.data.values;
+        // console.log("tempList==>",tempList);
+        let typeList = [];
+        for (let index = 0; index < tempList.length; index++) {
+          let languageList = []
+          const element = tempList[index];
+          // console.log("element==>",element);
+          languageList.push({
+            "labelText": "国际化key",
+            "text": element.internationnalKey
+          })
+          let countrys = element.countrys
+          for (let j = 0; j < countrys.length; j++) {
+            const tempCountry = countrys[j];
+            // console.log("country==>",tempCountry);
+            languageList.push({
+              "labelText": tempCountry.country,
+              "text": tempCountry.text
+            })
+          }
+          typeList.push(languageList)
+        }
+        console.log("typeList==>",typeList);
+        let typeObjList =[]
+        for (let index = 0; index < typeList.length; index++) {
+          let typeObj = {}
+          const element = typeList[index];
+          for (let j = 0; j < element.length; j++) {
+            const o = element[j];
+            typeObj[o.labelText] = o.text
+          }
+          typeObjList.push(typeObj)
+        }
+        console.log("typeObjList==>",typeObjList);
+        this.tableData = typeObjList
       } else {
         this.$message.error(res.msg);
       }

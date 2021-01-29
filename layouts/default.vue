@@ -42,9 +42,9 @@
         </el-main>
       </el-container>
     </el-container>
-    <el-footer class="footer">
+    <!-- <el-footer class="footer">
       <Footer />
-    </el-footer>
+    </el-footer> -->
   </div>
 </template>
 

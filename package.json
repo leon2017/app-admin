@@ -1,8 +1,8 @@
 {
-  "name": "nuxt-koa-mall",
+  "name": "app-admin",
   "version": "1.0.0",
-  "description": "My finest Nuxt.js project",
-  "author": "FinGet",
+  "description": "Nuxt.js project",
+  "author": "leon",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",

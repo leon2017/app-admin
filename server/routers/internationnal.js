@@ -54,4 +54,22 @@ router.post('/addInternationnal', async (ctx) => {
   }
 })
 
+router.get("/queryInternationnals", async (ctx) => {
+  let typeName = ctx.request.query.typeName
+  let internationnalModel = await Internationnal.findOne({
+    'name': typeName
+  })
+  if(internationnalModel){
+    ctx.body = {
+      status: 200,
+      data: internationnalModel
+    }
+  }else {
+    ctx.body = {
+      status: 0,
+      data: '获取数据失败'
+    }
+  }
+})
+
 module.exports = router;
