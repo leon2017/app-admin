@@ -62,6 +62,7 @@ export default {
 
 <style lang="less" scoped>
 .user {
+  margin-right: 20px;
   .flex-align--center;
   & > div p {
     .flex-align--center;

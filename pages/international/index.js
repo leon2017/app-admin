@@ -4,11 +4,27 @@ import {
 export const obj = {
   data() {
     return {
+      typeName: this.$route.query.typeName,
       langTitles: LangFileName,
       addDialogFormVisible: false,
       formList: [],
       formLabelWidth: '100px',
       tableData: []
+    }
+  },
+  created() {
+    console.log("created");
+  },
+
+  watch: {
+    '$route'(newVal, oldVal) {
+      let tempTypeName = newVal.query.typeName
+      console.log(tempTypeName)
+      console.log("watch");
+      if(tempTypeName!=this.typeName){
+        this.typeName= tempTypeName;
+        this.queryLanguags();
+      }
     }
   },
   mounted(){
@@ -43,7 +59,7 @@ export const obj = {
       })
       // console.log("tempCountrys===>",JSON.stringify(tempCountrys));
       let params =  {
-        type: 'ezbuy',
+        type: this.typeName,
         internationnal: {
           internationnalKey: tempKey,
           countrys: tempCountrys
@@ -63,7 +79,7 @@ export const obj = {
       }
     },
     async queryLanguags(){
-      let res = await this.$axios.get("/i18n/queryInternationnals?typeName=ezbuy");
+      let res = await this.$axios.get(`/i18n/queryInternationnals?typeName=${this.typeName}`);
       if(res.status == 200) {
         let tempList = res.data.values;
         // console.log("tempList==>",tempList);
@@ -101,6 +117,7 @@ export const obj = {
         console.log("typeObjList==>",typeObjList);
         this.tableData = typeObjList
       } else {
+        this.tableData = []
         this.$message.error(res.msg);
       }
     }

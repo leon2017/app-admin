@@ -1,61 +1,39 @@
 <template>
-  <div>
-    <el-header>
-      <top-bar />
-    </el-header>
-    <el-container class="main">
-      <el-aside width="200px" style="background-color: rgb(238, 241, 246)" v-if="$store.state.user.userName">
-        <el-menu :router="true" :default-openeds="['1']">
-          <el-submenu index="1">
-            <template slot="title"
-              ><i class="el-icon-message"></i>国际化</template>
-            <el-menu-item-group>
-              <el-menu-item v-for="(v,k) in menuList" v-bind:key="k" :index="'1-'+k" :route="v.router">{{v.name}}</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-submenu index="2">
-            <template slot="title"
-              ><i class="el-icon-menu"></i>导航二</template
-            >
-            <el-menu-item-group>
-              <template slot="title"
-                >分组一</template
-              >
-              <el-menu-item index="2-1">选项1</el-menu-item>
-              <el-menu-item index="2-2">选项2</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="分组2">
-              <el-menu-item index="2-3">选项3</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="2-4">
-              <template slot="title"
-                >选项4</template
-              >
-              <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-            </el-submenu>
-          </el-submenu>
-        </el-menu>
-      </el-aside>
-      <el-container>
-        <el-main>
-          <nuxt />
-        </el-main>
-      </el-container>
-    </el-container>
-    <!-- <el-footer class="footer">
-      <Footer />
-    </el-footer> -->
-  </div>
+  <section class="layout">
+    <aside
+      class="layout-aside aside-fixed">
+      <logo></logo>
+      <aside-menu></aside-menu>
+    </aside>
+    <section
+      class="layout layout-main"
+      :style="{ paddingLeft: '256px' }">
+      <div
+        class="layout-header" >
+        <top-bar />
+      </div>
+      <div class="relative container-main" ref="mainBox" style="padding: 20px">
+        <el-card>
+          <nuxt></nuxt>
+        </el-card>
+      </div>
+    </section>
+    <el-backtop></el-backtop>
+  </section>
 </template>
 
 <script>
 import TopBar from "~/components/topBar";
 import Footer from "~/components/footer";
+import AsideMenu from "~/components/AsideMenu";
+import Logo from "~/components/Logo";
 import menuConfig from "../configs/menuNavigation";
 export default {
   components: {
     TopBar,
     Footer,
+    AsideMenu,
+    Logo,
   },
   data() {
     return {
@@ -77,12 +55,59 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: calc(100% - 20px);
+.layout {
+  display: flex;
+  flex: auto;
+  min-height: 0;
+  background: #f0f2f5;
+  box-sizing: border-box;
+  flex-direction: row;
+
+  .layout-aside {
+    width: 256px;
+    background: #001529;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
+
+    &.aside-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      min-height: 100vh;
+    }
+  }
 }
-.main {
-  min-height: 600px;
+
+.layout-main {
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout-header {
+  width: 100%;
+  height: 64px;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  position: relative;
+  height: 60px;
+}
+
+.container-main {
+  position: absolute;
+  left: 256px;
+  right: 0;
+  top: 65px;
+  bottom: 0;
+  overflow-y: scroll;
+}
+
+.logo {
+  padding: 0 10px;
+
+  img {
+    width: 40px;
+  }
 }
 </style>
